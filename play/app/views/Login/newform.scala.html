@@ -1,6 +1,6 @@
 @()(implicit flash:play.mvc.Scope.Flash)
 @main(title = "Authentication - Login") {
-<form action="@action(controllers.Authentication.doLogin)" method="POST">
+<form action="@action(controllers.Login.create)" method="POST">
     <div class="box450">
         <fieldset>
             <legend>Please login</legend>
@@ -12,7 +12,7 @@
             <div>
                 Need an account?
         <span>
-          <a href="@action(controllers.Authentication.register)">Register</a>
+          <a href="@action(controllers.User.newform)">Register</a>
         </span>
             </div>
         </fieldset>

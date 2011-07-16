@@ -1,6 +1,6 @@
 @()(implicit flash:play.mvc.Scope.Flash)
-@main(title = "Authentication - Register") {
-<form action="@action(controllers.Authentication.doRegister)" method="POST">
+@main(title = "New User Registration") {
+<form action="@action(controllers.Login.create)" method="POST">
     <div class="box450">
         <fieldset>
             <legend>Please login</legend>
@@ -11,7 +11,7 @@
             <label>Password:</label><input type="password" name="password"/>
             <input type="submit" value="Register" class="button175">
             <input type="button" value="Back to Login" class="button175"
-                   onclick="location.href='@action(controllers.Authentication.login)'"><br/>
+                   onclick="location.href='@action(controllers.Login.newform)'"><br/>
         </fieldset>
     </div>
 </form>

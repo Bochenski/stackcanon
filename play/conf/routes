@@ -6,6 +6,16 @@
 GET     /                                       Application.index
 
 # RESTful resources
+#TODO GET     /login                                 controllers.Login.index
+GET     /login/new                              controllers.Login.newform
+POST    /login                                  controllers.Login.create
+DELETE  /login                                  controllers.Login.destroy
+
+GET     /user                                   controllers.User.index
+GET     /user/new                               controllers.User.newform
+POST    /user                                   controllers.User.create
+#TODO DELETE  /user/{id}                              controllers.User.destroy
+GET     /user/{id}                              controllers.User.show
 
 GET     /user/index.{<html|json|xml>format}     controllers.User.index
 GET     /user/{id}.{<html|json|xml>format}      controllers.User.show

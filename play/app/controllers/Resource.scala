@@ -34,7 +34,7 @@ object Resource extends Controller {
   }
 
   def form() = {
-    html.form()
+    html.newform()
   }
 
   def update(id: String) = {}

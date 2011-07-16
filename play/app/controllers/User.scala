@@ -5,9 +5,9 @@ import com.mongodb.casbah.Imports._
 import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
-object User extends Controller {
+object User extends Controller with Authentication {
 
-  import views.Authentication._
+  import views.Login._
 
   def index() = {
     request.format match {
@@ -25,4 +25,18 @@ object User extends Controller {
       case "json" => Json(compact(JsonAST.render(models.User.findByID(oid).get.toJson)))
     }
    }
+
+  def newform = html.newform()
+
+  def create() = {
+    (models.User.create(params.get("email"), params.get("first_name"), params.get("surname"), params.get("password"), true)) match {
+      case true =>
+        val user = models.User.login(params.get("email"), params.get("password"))
+        setSessionUser(user.get)
+        Action(Application.index)
+      case false =>
+        flash += ("error" -> "Registration failed")
+        Action(newform)
+    }
+  }
 }
