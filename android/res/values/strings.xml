@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">temp</string>
+    <string name="main_title">Nothing</string>
+    <string name="get_label">Call the Service</string>
+    <string name="post_label">Post the Service</string>
 </resources>
