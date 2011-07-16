@@ -1,0 +1,284 @@
+body
+{
+  margin: 0px;
+  font-family: 'Cuprum', arial, serif;
+  font-size: 12pt;
+  width: 100%;
+/*  color: #404040;*/
+  background-color: #202020;
+  height: 100%;
+  color: #E0E0E0;
+}
+
+form
+{
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+
+A:link { color:DeepSkyBlue; text-decoration: none }
+A:visited { color:DeepSkyBlue; text-decoration: none }
+A:active {color: Green; text-decoration: none }
+A:hover { text-decoration: underline; color: DeepSkyBlue }
+
+.box450
+{
+	width: 450px;
+	margin: 20px;
+}
+
+.box800
+{
+	width: 800px;
+	margin: 20px;
+}
+
+.box450, .box800
+{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Tables/grids */
+.table
+{
+	background: #404040;
+	font-size: 12pt;
+	width: 100%;
+	margin: 10px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.table_header
+{
+	background-color: #A0A0A0;
+	color: white;
+}
+
+.table_odd, .table_row
+{
+	background-color: #606060;
+}
+
+.table_even
+{
+	background-color: #404040;
+}
+
+.table_selected
+{
+	background-color: #A0A0A0;
+}
+
+.table_doubleselected
+{
+	background-color: #606060;
+}
+
+/* Fieldset */
+fieldset
+{
+/*  font-weight:100%/1;*/
+  border-color: black;
+  background-color: #404040;
+  border-width: 1px;
+  border-style: solid;
+  margin-top: 30px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+fieldset legend
+{
+  font-family: 'Cuprum', arial, serif;
+  padding: 2px;
+  background-color: orange;
+  font-size: 20pt;
+  font-weight: normal;
+  color: black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width: 100%;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+fieldset label
+{
+  display: block;
+  padding-top: 8px;
+  text-align: left;
+  font-weight: normal;
+  width: 100%;
+}
+
+/* Styling fieldset boxes */
+input[type=file]
+{
+  font-family: 'Cuprum', arial, serif;
+  font-size: 12pt;
+  color: black;
+  border: 1px solid #ccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+textarea,
+input[type=text],
+input[type=password],
+input[type=email]
+{
+  font-family: 'Cuprum', arial, serif;
+  font-size: 12pt;
+  color: black;
+  border: 1px solid #222;
+  padding: 2px;
+  width: 100%;
+  display: block;
+  text-align: left;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+select,
+input[type=checkbox]
+{
+  border: 1px solid #ccc;
+  line-height: 20px;
+  padding: 2px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+/* Buttons */
+.button80x35, .button80x20, .button130, .button200, .button200grey, .button175, .button175grey
+{
+  font-family: 'Cuprum', arial, serif;
+  text-decoration: none;
+  border: none;
+  outline: none; /* hide dotted outline in Firefox */
+  color: #E8E8E8;
+}
+.button80x35
+{
+  background: transparent url('/images/buttons/80x35blue.png') no-repeat top right;
+  font-size: 13px;
+  height: 35px;
+  width: 80px;
+}
+.button80x20
+{
+  background: transparent url('/images/buttons/80x20blue.png') no-repeat top right;
+  font-size: 11px;
+  height: 20px;
+  width: 80px;
+}
+.button130
+{
+  background: transparent url('/images/buttons/130blue.png') no-repeat top right;
+  font-size: 13pt;
+  height: 40px;
+  width: 130px;
+  line-height: 36px;
+}
+.button200
+{
+  background: transparent url('/images/buttons/200blue.png') no-repeat top right;
+  font-size: 13pt;
+  height: 40px;
+  width: 200px;
+  line-height: 40px;
+}
+.button200grey
+{
+  background: transparent url('/images/buttons/200blue.png') no-repeat top right;
+  font-size: 13pt;
+  height: 40px;
+  width: 200px;
+  line-height: 40px;
+  color: #D0D0D0;
+}
+.button175
+{
+  background: transparent url('/images/buttons/175blue.png') no-repeat top right;
+  font-size: 13pt;
+  height: 40px;
+  width: 175px;
+  line-height: 40px;
+  margin: 10px;
+}
+.button175grey
+{
+  background: transparent url('/images/buttons/175bluegrey.png') no-repeat top right;
+  font-size: 13pt;
+  height: 40px;
+  width: 175px;
+  line-height: 40px;
+  color: black;
+}
+.button80x20blue, .button80x35:hover, .button80x20:hover, .button130:hover, .button200:hover, .button200grey:hover, .button175:hover, .button175grey:hover
+{
+  color: White;
+}
+.button360x80, .button360x80_sel, .button360x80smalltext, .button360x80smalltext_sel, .button360x80largetext, .button360x80largetext_sel, .button200x60, .button200x60_sel
+{
+  text-decoration: none;
+  border: none;
+  text-align: center;
+  padding: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  white-space: normal;
+  outline: none; /* hide dotted outline in Firefox */
+  color: #E8E8E8;
+}
+.button360x80, .button360x80_sel, .button360x80smalltext, .button360x80smalltext_sel, .button360x80largetext, .button360x80largetext_sel
+{
+  background: transparent url('/images/buttons/360x80blue.png') no-repeat top right;
+  height: 80px;
+  width: 360px;
+}
+.button360x80:hover, .button360x80_sel:hover, .button360x80smalltext:hover, .button360x80smalltext_sel:hover, .button360x80largetext:hover, .button360x80largetext_sel:hover
+{
+  color: White;
+}
+.button360x80_sel, .button360x80smalltext_sel, .button360x80largetext_sel
+{
+  color: #D80000;
+}
+.button360x80, .button360x80_sel
+{
+  font-size: 18px;
+}
+.button360x80smalltext, .button360x80smalltext_sel
+{
+  font-size: 14px;
+}
+.button360x80largetext, .button360x80largetext_sel
+{
+  font-size: 24px;
+}
+.button200x60, .button200x60_sel
+{
+  background: transparent url('/images/buttons/200x60blue.png') no-repeat top right;
+  font-size: 18px;
+  height: 60px;
+  width: 200px;
+}
+.button200x60:hover, .button200x60_sel:hover
+{
+  color: White;
+}
+.button200x60_sel
+{
+  color: #D80000;
+}
+

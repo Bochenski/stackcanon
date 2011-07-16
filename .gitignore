@@ -1,2 +1,9 @@
 /.idea/libraries
+/.idea/workspace.xml
 /out
+/play/modules
+/play/tmp
+/play/lib
+/play/precompiled
+*.DS_Store
+

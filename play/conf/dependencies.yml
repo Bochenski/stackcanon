@@ -1,0 +1,16 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> scala 0.9.1
+    - com.mongodb.casbah -> casbah_2.8.1 2.1.2
+    - net.liftweb -> lift-json_2.8.1 2.3
+    - joda-time -> joda-time 1.6.2
+
+repositories:
+    - scalatools:
+        type: iBiblio
+        root: http://scala-tools.org/repo-releases/
+        contains:
+            - com.mongodb.casbah -> *
+            - org.scalaj -> *

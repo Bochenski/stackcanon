@@ -1,0 +1,21 @@
+@()(implicit flash:play.mvc.Scope.Flash)
+@main(title = "Authentication - Login") {
+<form action="@action(controllers.Authentication.doLogin)" method="POST">
+    <div class="box450">
+        <fieldset>
+            <legend>Please login</legend>
+            @showflash()
+            <label>Email:</label><input type="text" name="email"/>
+            <label>Password:</label><input type="password" name="password"/>
+            <input type="submit" value="Login" class="button175">
+
+            <div>
+                Need an account?
+        <span>
+          <a href="@action(controllers.Authentication.register)">Register</a>
+        </span>
+            </div>
+        </fieldset>
+    </div>
+</form>
+}

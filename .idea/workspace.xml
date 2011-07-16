@@ -2,15 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5967aa51-ae4a-4f27-9512-bf6f7027bea7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/com/gintellect/temp/Resource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/android/src/com/gintellect/temp/ResourceTask.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/android/src/com/gintellect/temp/Temp.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/130.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/130blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/175blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/175bluegrey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/200.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/200blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/200x60blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/360x80blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/80x20.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/80x20blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/80x35.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/public/images/buttons/80x35blue.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/controllers/Application.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/controllers/Authentication.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/controllers/Resource.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/controllers/Secure.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/controllers/User.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/models/DBBase.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/models/DBInstance.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/models/MongoDB.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/models/Resource.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/models/User.scala" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/views/Authentication/login.scala.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/views/Authentication/register.scala.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/views/Resource/form.scala.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/views/Resource/index.scala.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/views/Tags/notice.scala.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/play/app/views/showflash.scala.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/AndroidManifest.xml" afterPath="$PROJECT_DIR$/android/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/gen/com/gintellect/temp/R.java" afterPath="$PROJECT_DIR$/android/gen/com/gintellect/temp/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/res/layout/main.xml" afterPath="$PROJECT_DIR$/android/res/layout/main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/android/res/values/strings.xml" afterPath="$PROJECT_DIR$/android/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/play/play.iml" afterPath="$PROJECT_DIR$/play/play.iml" />
     </list>
     <ignored path="stackcanon.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,37 +91,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Resource.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/src/com/gintellect/temp/Resource.java">
+      <file leaf-file-name="login.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/app/views/Authentication/login.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="119" column="0" selection-start="3511" selection-end="3511" vertical-scroll-proportion="0.0">
+            <state line="21" column="0" selection-start="699" selection-end="699" vertical-scroll-proportion="-13.125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResourceTask.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/src/com/gintellect/temp/ResourceTask.java">
+      <file leaf-file-name="register.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/app/views/Authentication/register.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="53" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0">
+            <state line="18" column="0" selection-start="840" selection-end="840" vertical-scroll-proportion="-11.25">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/android/AndroidManifest.xml">
+      <file leaf-file-name="form.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/app/views/Resource/form.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="37" selection-start="705" selection-end="705" vertical-scroll-proportion="0.49281314">
+            <state line="12" column="0" selection-start="418" selection-end="418" vertical-scroll-proportion="-7.5">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/android/build.xml">
+      <file leaf-file-name="index.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/app/views/Resource/index.scala.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="13" column="1" selection-start="256" selection-end="256" vertical-scroll-proportion="-8.125">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notice.scala.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/app/views/Tags/notice.scala.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="0" selection-start="393" selection-end="393" vertical-scroll-proportion="-20.625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.conf" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/conf/application.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="26" selection-start="2594" selection-end="2594" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="10" selection-start="105" selection-end="105" vertical-scroll-proportion="0.14563107">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dependencies.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/conf/dependencies.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="4" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/conf/routes">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/play/public/stylesheets/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="73" column="30" selection-start="970" selection-end="997" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -119,12 +195,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/android/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/android/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/android/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/android/src/com/gintellect/temp/Temp.java" />
-        <option value="$PROJECT_DIR$/android/src/com/gintellect/temp/Resource.java" />
-        <option value="$PROJECT_DIR$/android/src/com/gintellect/temp/ResourceTask.java" />
+        <option value="$PROJECT_DIR$/play/app/models/User.scala" />
+        <option value="$PROJECT_DIR$/play/app/controllers/User.scala" />
+        <option value="$PROJECT_DIR$/play/app/views/Application/index.scala.html" />
+        <option value="$PROJECT_DIR$/play/app/views/main.scala.html" />
+        <option value="$PROJECT_DIR$/play/app/views/showflash.scala.html" />
+        <option value="$PROJECT_DIR$/play/app/controllers/Application.scala" />
+        <option value="$PROJECT_DIR$/play/app/views/Authentication/login.scala.html" />
+        <option value="$PROJECT_DIR$/play/app/views/Authentication/register.scala.html" />
+        <option value="$PROJECT_DIR$/play/app/views/Resource/form.scala.html" />
+        <option value="$PROJECT_DIR$/play/app/views/Resource/index.scala.html" />
+        <option value="$PROJECT_DIR$/play/app/views/Tags/notice.scala.html" />
+        <option value="$PROJECT_DIR$/play/conf/dependencies.yml" />
+        <option value="$PROJECT_DIR$/play/conf/routes" />
+        <option value="$PROJECT_DIR$/play/public/stylesheets/main.css" />
+        <option value="$PROJECT_DIR$/play/conf/application.conf" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -139,7 +225,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -172,7 +258,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
+              <option name="myItemId" value="play" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -182,15 +268,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
+              <option name="myItemId" value="play" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="temp" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -200,33 +282,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
+              <option name="myItemId" value="play" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stackcanon" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="stylesheets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -236,11 +300,69 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="android" />
+              <option name="myItemId" value="play" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stackcanon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="play" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stackcanon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="play" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="buttons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stackcanon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="play" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -253,15 +375,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="Html" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/play/public/images" />
+    </key>
   </component>
   <component name="RunManager" selected="Android Application.android">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -493,7 +621,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24949563" sideWeight="0.6701299" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32987013" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32987013" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -550,44 +678,114 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/android/res/layout/main.xml">
+    <entry file="file://$PROJECT_DIR$/play/app/controllers/User.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="783" selection-end="783" vertical-scroll-proportion="0.5060729">
+        <state line="23" column="56" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/play/app/controllers/Resource.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="97" selection-end="97" vertical-scroll-proportion="0.060728744">
+        <state line="11" column="0" selection-start="240" selection-end="240" vertical-scroll-proportion="0.22267206">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/com/gintellect/temp/Resource.java">
+    <entry file="file://$PROJECT_DIR$/play/app/views/showflash.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="0" selection-start="3511" selection-end="3511" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.10460251">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/src/com/gintellect/temp/ResourceTask.java">
+    <entry file="file://$PROJECT_DIR$/play/app/views/main.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="53" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0">
+        <state line="21" column="0" selection-start="1148" selection-end="1148" vertical-scroll-proportion="0.43933055">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/build.xml">
+    <entry file="file://$PROJECT_DIR$/play/app/controllers/Application.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="11" column="34" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/android/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/play/app/views/Application/index.scala.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="37" selection-start="705" selection-end="705" vertical-scroll-proportion="0.49281314">
+        <state line="5" column="17" selection-start="74" selection-end="74" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/app/views/Authentication/login.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="699" selection-end="699" vertical-scroll-proportion="-13.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/app/views/Authentication/register.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="840" selection-end="840" vertical-scroll-proportion="-11.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/app/views/Resource/form.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="418" selection-end="418" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/app/views/Resource/index.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="1" selection-start="256" selection-end="256" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/app/views/Tags/notice.scala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="393" selection-end="393" vertical-scroll-proportion="-20.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/conf/dependencies.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="4" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/conf/routes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/public/stylesheets/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="30" selection-start="970" selection-end="997" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play/conf/application.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="26" selection-start="2594" selection-end="2594" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="10" selection-start="105" selection-end="105" vertical-scroll-proportion="0.14563107">
           <folding />
         </state>
       </provider>
@@ -609,7 +807,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>Scala (play)|Scala</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -644,12 +842,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>play</last-edited>
+          <last-edited>Scala|play</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -669,7 +866,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Scala 2.8.1 Compiler</last-edited>
+          <last-edited>Scala 2.8.1 Library</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

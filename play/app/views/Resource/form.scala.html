@@ -1,0 +1,12 @@
+@()(implicit flash:play.mvc.Scope.Flash)
+@main(title = "Resource - New") {
+<form action="@action(controllers.Resource.create)" method="POST">
+    <div class="box450">
+        <fieldset>
+            <legend>Please login</legend>
+            <label>First Name</label><input type="text" name="first_name"/>
+            <input type="submit" value="Add Resource" class="button175">
+        </fieldset>
+    </div>
+</form>
+}
