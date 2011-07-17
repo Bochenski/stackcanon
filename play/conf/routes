@@ -7,12 +7,12 @@ GET     /                                       Application.index
 
 # RESTful resources
 #TODO GET     /login                                 controllers.Login.index
-GET     /login/new                              controllers.Login.newform
+GET     /login/new                              controllers.Login.form
 POST    /login                                  controllers.Login.create
 DELETE  /login                                  controllers.Login.destroy
 
 GET     /user                                   controllers.User.index
-GET     /user/new                               controllers.User.newform
+GET     /user/new                               controllers.User.form
 POST    /user                                   controllers.User.create
 #TODO DELETE  /user/{id}                              controllers.User.destroy
 GET     /user/{id}                              controllers.User.show
@@ -30,5 +30,4 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 GET     /images/                                staticDir:public/images
 
-# Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       {controller}/{action

@@ -11,7 +11,7 @@ trait Secure {
   def checkSecurity = {
     session("user_id") match {
       case Some(user_id) => Continue
-      case None => Action(controllers.Login.newform)
+      case None => Action(controllers.Login.form)
     }
   }
 

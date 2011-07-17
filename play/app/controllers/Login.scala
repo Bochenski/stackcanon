@@ -9,7 +9,7 @@ object Login extends Controller with Authentication {
 
   import views.Login._
 
-  def newform = html.newform()
+  def form = html.form()
 
   def create(): ScalaAction = {
     models.User.login(params.get("email"), params.get("password")) match {
@@ -19,13 +19,13 @@ object Login extends Controller with Authentication {
         Action(Application.index)
       case None =>
         flash += ("error" -> "Invalid email and/or password")
-        Action(newform)
+        Action(Login.form)
     }
   }
 
   def destroy() = {
     clearSessionUser()
-    Action(newform)
+    Action(Login.form)
   }
 
 

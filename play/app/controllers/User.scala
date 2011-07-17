@@ -7,7 +7,7 @@ import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
 object User extends Controller with Authentication {
 
-  import views.Login._
+  import views.User._
 
   def index() = {
     request.format match {
@@ -26,7 +26,7 @@ object User extends Controller with Authentication {
     }
    }
 
-  def newform = html.newform()
+  def form = html.form()
 
   def create() = {
     (models.User.create(params.get("email"), params.get("first_name"), params.get("surname"), params.get("password"), true)) match {
@@ -36,7 +36,7 @@ object User extends Controller with Authentication {
         Action(Application.index)
       case false =>
         flash += ("error" -> "Registration failed")
-        Action(newform)
+        Action(form)
     }
   }
 }
