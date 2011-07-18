@@ -6,22 +6,25 @@
 GET     /                                       Application.index
 
 # RESTful resources
-#TODO GET     /login                                 controllers.Login.index
-GET     /login/new                              controllers.Login.form
-POST    /login                                  controllers.Login.create
-DELETE  /login                                  controllers.Login.destroy
+# TODO GET     /login                                 controllers.Login.index
+GET     /login/new                              Login.form
+POST    /login                                  Login.create
 
-GET     /user                                   controllers.User.index
-GET     /user/new                               controllers.User.form
-POST    /user                                   controllers.User.create
-#TODO DELETE  /user/{id}                              controllers.User.destroy
-GET     /user/{id}                              controllers.User.show
+POST    /login/delete                           Login.destroy
+DELETE  /login                                  Login.destroy
 
-GET     /user/index.{<html|json|xml>format}     controllers.User.index
-GET     /user/{id}.{<html|json|xml>format}      controllers.User.show
-GET     /resource/index.{<html|json|xml>format} controllers.Resource.index
-POST    /resource.{<html|json>format}           controllers.Resource.create
-GET     /resource/new                           controllers.Resource.form
+GET     /user                                   User.index
+GET     /user/new                               User.form
+POST    /user                                   User.create
+#TODO DELETE  /user/{id}                              User.destroy(id)
+#TODO POST    /user/{id}/delete                       User.destroy(id)
+GET     /user/{id}                              User.show
+
+GET     /resource/index                         Resource.index
+GET     /resource/index.{<json|xml>format}      Resource.index
+POST    /resource                               Resource.create
+POST    /resource.{<json|xml>format}            Resource.create
+GET     /resource/new                           Resource.form
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
@@ -30,4 +33,4 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 GET     /images/                                staticDir:public/images
 
-*       {controller}/{action
+#*       /{controller}/{action}                   {controller}.{action}

@@ -9,7 +9,7 @@ object User extends Controller with Authentication {
 
   import views.User._
 
-  def index() = {
+  def index = {
     request.format match {
 //      case "html" => html.index()
       case "xml" => Xml(models.User.allXML)

@@ -33,6 +33,7 @@ object User extends DBBase[User]("Users") {
   def findByUsername(username: String) = findOneBy("username", username)
 
   def create(username: String, first_name: String, surname: String, password: String, isAdmin: Boolean) = {
+    Logger.info("in model create user")
     //check whether the user exists
     val user = findByUsername(username)
     user match {

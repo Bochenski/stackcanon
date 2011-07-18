@@ -13,7 +13,7 @@ object Resource extends Controller {
 
   import views.Resource._
 
-  def index() = {
+  def index = {
     request.format match {
       case "json" => {
         Json(compact(JsonAST.render(models.Resource.allJson)))
@@ -33,7 +33,7 @@ object Resource extends Controller {
     }
   }
 
-  def form() = {
+  def form = {
     html.newform()
   }
 
