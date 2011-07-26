@@ -25,11 +25,17 @@ object Resource extends Controller {
   def create() = {
   implicit val formats = DefaultFormats
     request.format match {
-      case "html" => models.Resource.create(params.get("first_name")) match {
+      case "html" => models.Resource.create(params.get("value")) match {
         case true => Action(index)
       }
-      case "json" => for (x <- JsonParser.parse(params.get("body")).children ) models.Resource.fromJson(x)
-        Ok
+      case "json" => {
+        val o = (JsonParser.parse(params.get("body")).children).head
+        val value = (o \\ "value").values.toString
+        models.Resource.create(value) match {
+          case true => OK
+          case _ => ERROR
+        }
+      }
     }
   }
 

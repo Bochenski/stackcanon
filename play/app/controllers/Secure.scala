@@ -11,7 +11,15 @@ trait Secure {
   def checkSecurity = {
     session("user_id") match {
       case Some(user_id) => Continue
-      case None => Action(controllers.Login.form)
+
+      //case None =>
+      case None =>
+      {
+        request.format match {
+           case "html" => Action(controllers.Login.form)
+           case _ => Unauthorized
+        }
+      }
     }
   }
 

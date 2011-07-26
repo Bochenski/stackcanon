@@ -7,40 +7,16 @@ import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
 
-class Resource(o: DBObject) {
+class Resource(o: DBObject) extends DBInstance("Resource") {
   lazy val oid = o.getAs[ObjectId]("_id")
-  lazy val first_name = o.getAs[String]("first_name")
-  val toXML = <Resource>
-    <oid>
-      {oid.getOrElse("").toString}
-    </oid>
-    <first_name>
-      {first_name.getOrElse("")}
-    </first_name>
-  </Resource>
-  val toJson = ("oid" -> oid.getOrElse("").toString) ~ ("first_name" -> first_name.getOrElse(""))
+  lazy val value = o.getAs[String]("value")
 }
 
-object Resource {
-  def coll = MongoDB.getDB("Resources")
+object Resource extends DBBase[Resource]("Resources") {
 
-  def contentField = MongoDBObject("content" -> 0)
-
-  def fromJson(o: JValue) {
-    create((o \\ "first_name").values.toString)
-  }
-
-  def all() = {
-    for (x <- coll.find(MongoDBObject(), contentField).toIterable) yield new Resource(x)
-  }
-
-  def allJson() = {
-    for (x <- coll.find(MongoDBObject(), contentField).toIterable) yield new Resource(x).toJson
-  }
-
-  def create(first_name: String) = {
+  def create(value: String) = {
     val builder = MongoDBObject.newBuilder
-    builder += "first_name" -> first_name
+    builder += "value" -> value
     val newObj = builder.result().asDBObject
     coll += newObj
     true

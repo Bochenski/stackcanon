@@ -1,6 +1,7 @@
 package models
 
 import com.mongodb.casbah.Imports._
+import scala.xml._
 
 abstract class DBBase[T: Manifest](collName: String) {
   def coll = MongoDB.getDB(collName)
@@ -19,7 +20,8 @@ abstract class DBBase[T: Manifest](collName: String) {
   }
 
   def allXML() = {
-    for (x <- coll.find(MongoDBObject(), contentField).toIterable) yield newT1(x).asInstanceOf[DBInstance].toXml
+    val nodes = (for (x <- coll.find(MongoDBObject(), contentField).toIterable) yield newT1(x).asInstanceOf[DBInstance].toXml).toSeq
+    new Elem(null, collName, xml.Null, xml.TopScope, nodes: _*)
   }
 
   def findByID(id: ObjectId): Option[T] = {
