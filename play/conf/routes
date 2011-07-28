@@ -10,6 +10,10 @@ GET     /                                       Application.index
 GET     /login/new                              Login.form
 POST    /login                                  Login.create
 
+# OpenID
+GET     /openid/new                             OpenID.form
+GET     /openid                                 OpenID.create
+
 POST    /login/delete                           Login.destroy
 DELETE  /login                                  Login.destroy
 

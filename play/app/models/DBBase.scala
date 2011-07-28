@@ -52,4 +52,17 @@ abstract class DBBase[T: Manifest](collName: String) {
     for (x <- coll.find(q, contentField).toIterable) yield newT(x)
   }
 
+  def addField(o: DBInstance, key: String, value: Object) {
+    o.dbo += key -> value
+//    o.dbo += "schedule" -> Schedule.serialiseSchedule(schedule)
+  }
+
+  def update(o: DBInstance): WriteResult = {
+    coll.save(o.dbo)
+  }
+
+  def delete(o: DBInstance): WriteResult = {
+    coll.remove(o.dbo)
+  }
+
 }

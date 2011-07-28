@@ -8,7 +8,7 @@ import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
 
-class User(o: DBObject) extends DBInstance("User") {
+class User(o: DBObject) extends DBInstance("User",o) {
   lazy val oid = o.getAs[ObjectId]("_id")
   lazy val username = o.getAs[String]("username")
   lazy val first_name = o.getAs[String]("first_name")

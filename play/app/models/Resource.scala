@@ -7,7 +7,7 @@ import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
 
-class Resource(o: DBObject) extends DBInstance("Resource") {
+class Resource(o: DBObject) extends DBInstance("Resource", o) {
   lazy val oid = o.getAs[ObjectId]("_id")
   lazy val value = o.getAs[String]("value")
 }

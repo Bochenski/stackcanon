@@ -4,8 +4,10 @@ import scala.xml._
 import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
+import com.mongodb.casbah.Imports._
 
-abstract class DBInstance(xmlEntity: String) {
+abstract class DBInstance(xmlEntity: String, o: DBObject) {
+  val dbo = o
   def nullOrString(o: Object) = if (o == null) "" else o.toString
   val ignoreOutput = List[String]()
   lazy val fields = this.getClass.getDeclaredFields.filter(x => x.getType.toString == "class scala.Option" && !ignoreOutput.contains(x.getName))
