@@ -1,0 +1,13 @@
+@()(implicit flash:play.mvc.Scope.Flash)
+@main(title = "Test Image Uploader") {
+<form action="/upload" method="POST" enctype="multipart/form-data">
+    <div class="box450">
+        <fieldset>
+            <legend>Please Upload File</legend>
+            @showflash()
+            <label>Image File:</label><input type="file" name="image" id="image"/>
+            <input type="submit" value="Send" class="button175">
+        </fieldset>
+    </div>
+</form>
+}

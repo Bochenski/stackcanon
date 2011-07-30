@@ -17,12 +17,18 @@ GET     /openid                                 OpenID.create
 POST    /login/delete                           Login.destroy
 DELETE  /login                                  Login.destroy
 
+
+
 GET     /user                                   User.index
 GET     /user/new                               User.form
 POST    /user                                   User.create
 #TODO DELETE  /user/{id}                              User.destroy(id)
 #TODO POST    /user/{id}/delete                       User.destroy(id)
 GET     /user/{id}                              User.show
+
+GET     /upload/index                           Upload.index
+POST    /upload                                 Upload.create
+GET     /upload/new                             Upload.form
 
 GET     /resource/index                         Resource.index
 GET     /resource/index.{<json|xml>format}      Resource.index

@@ -6,6 +6,7 @@ require:
     - com.mongodb.casbah -> casbah_2.8.1 2.1.2
     - net.liftweb -> lift-json_2.8.1 2.3
     - joda-time -> joda-time 1.6.2
+    - org.openid4java -> openid4java 0.9.6
 
 repositories:
     - scalatools:
@@ -14,3 +15,8 @@ repositories:
         contains:
             - com.mongodb.casbah -> *
             - org.scalaj -> *
+    - guiceMaven:
+        type: iBiblio
+        root: http://guice-maven.googlecode.com/svn/trunk
+        contains:
+            - com.google.code.guice -> *
