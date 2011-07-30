@@ -1,0 +1,23 @@
+@(settings:Iterable[models.ApplicationSetting])(implicit flash:play.mvc.Scope.Flash)
+
+@main("") {
+<div class="box800">
+    <fieldset>
+        <legend>Application System Settings</legend>
+        @showflash()
+        <table class="table">
+            <tr class="table_header">
+                <td>Name</td>
+                <td>Value</td>
+            </tr>
+            @settings.map { setting =>
+            <tr class="table_row">
+                <td>@setting.key.get</td>
+                <td>@setting.value.get</td>
+            </tr>
+            }
+        </table>
+        <input type="button" value="New" class="button175" onclick="location.href='@action(controllers.ApplicationSetting.form)'"><br/>
+    </fieldset>
+</div>
+}

@@ -6,32 +6,31 @@ import com.mongodb.casbah.Imports._
 import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
-import results._
-import scala.collection.JavaConverters._
 
-object Resource extends Controller {
+object ApplicationSetting extends Controller with Secure with SysAdmin {
 
-  import views.Resource._
+  import views.ApplicationSetting._
 
-  def index = {
-    request.format match {
+  def index() = {
+        request.format match {
       case "json" => {
-        Json(compact(JsonAST.render(models.Resource.allJson)))
+        Json(compact(JsonAST.render(models.ApplicationSetting.allJson)))
       }
-      case _ => html.index(models.Resource.all)
+      case _ => html.index(models.ApplicationSetting.all)
     }
   }
 
   def create() = {
   implicit val formats = DefaultFormats
     request.format match {
-      case "html" => models.Resource.create(params.get("value")) match {
+      case "html" => models.ApplicationSetting.create(params.get("key"),params.get("value")) match {
         case true => Action(index)
       }
       case "json" => {
         val o = (JsonParser.parse(params.get("body")).children).head
+        val key = (o \\ "key").values.toString
         val value = (o \\ "value").values.toString
-        models.Resource.create(value) match {
+        models.ApplicationSetting.create(key,value) match {
           case true => OK
           case _ => ERROR
         }
@@ -43,5 +42,6 @@ object Resource extends Controller {
     html.form()
   }
 
-  def update(id: String) = {}
+  def show(id: ObjectId) = {}
+
 }

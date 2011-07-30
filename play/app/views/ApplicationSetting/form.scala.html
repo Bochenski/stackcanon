@@ -1,0 +1,13 @@
+@()(implicit flash:play.mvc.Scope.Flash)
+@main(title = "Setting - New") {
+<form action="@action(controllers.ApplicationSetting.create)" method="POST">
+    <div class="box450">
+        <fieldset>
+            <legend>Please Specify Setting</legend>
+            <label>Key</label><input type="text" name="key"/>
+            <label>Value</label><input type="text" name="value" />
+            <input type="submit" value="Add Setting" class="button175">
+        </fieldset>
+    </div>
+</form>
+}

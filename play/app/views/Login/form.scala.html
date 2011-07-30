@@ -5,16 +5,20 @@
         <fieldset>
             <legend>Please login</legend>
             @showflash()
+            <div>
+                <input type="button" value="Login with Google " class="button175google" onclick="location.href='@action(controllers.OpenID.form)'">
+                <input type="button" value="Login with Facebook " class="button175facebook" onclick="location.href='@action(controllers.Facebook.form)'"><br/>
+            </div>
+            <hr />
+            <span style="font-weight: bold">Or login with your StackCanon account:</span>
             <label>Email:</label><input type="text" name="email"/>
             <label>Password:</label><input type="password" name="password"/>
             <input type="submit" value="Login" class="button175">
-            <input type="button" value="Login with Google" class="button175" onclick="location.href='@action(controllers.OpenID.form)'"><br/>
-
             <div>
                 Need an account?
-        <span>
-          <a href="@action(controllers.User.form)">Register</a>
-        </span>
+                <span>
+                    <a href="@action(controllers.User.form)">Register</a>
+                </span>
             </div>
         </fieldset>
     </div>

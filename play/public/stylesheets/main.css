@@ -4,13 +4,14 @@ body
   font-family: 'Cuprum', arial, serif;
   font-size: 12pt;
   width: 100%;
-/*  color: #404040;*/
+/*  background-image: url("/images/IFS_Background.png");
+  color: #404040;*/
   background-color: #202020;
   height: 100%;
   color: #E0E0E0;
 }
 
-form
+form 
 {
   margin: 0px;
   padding: 0px;
@@ -25,20 +26,20 @@ A:hover { text-decoration: underline; color: DeepSkyBlue }
 .box450
 {
 	width: 450px;
-	margin: 20px;
+	margin: 20px; 
 }
 
 .box800
 {
 	width: 800px;
-	margin: 20px;
+	margin: 20px; 
 }
 
 .box450, .box800
 {
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+	text-align: center; 
+	margin-left: auto; 
+	margin-right: auto; 	
 }
 
 /* Tables/grids */
@@ -46,10 +47,10 @@ A:hover { text-decoration: underline; color: DeepSkyBlue }
 {
 	background: #404040;
 	font-size: 12pt;
-	width: 100%;
+	width: 100%; 
 	margin: 10px;
-	text-align: center;
-	margin-left: auto;
+	text-align: center; 
+	margin-left: auto; 
 	margin-right: auto
 }
 
@@ -80,7 +81,7 @@ A:hover { text-decoration: underline; color: DeepSkyBlue }
 }
 
 /* Fieldset */
-fieldset
+fieldset 
 {
 /*  font-weight:100%/1;*/
   border-color: black;
@@ -91,12 +92,12 @@ fieldset
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-}
+}         
 fieldset legend
 {
   font-family: 'Cuprum', arial, serif;
-  padding: 2px;
-  background-color: orange;
+  padding: 2px; 
+  background-color: orange;	
   font-size: 20pt;
   font-weight: normal;
   color: black;
@@ -108,7 +109,7 @@ fieldset legend
   border-width: 1px;
   border-style: solid;
 }
-fieldset label
+fieldset label 
 {
   display: block;
   padding-top: 8px;
@@ -158,7 +159,7 @@ input[type=checkbox]
 }
 
 /* Buttons */
-.button80x35, .button80x20, .button130, .button200, .button200grey, .button175, .button175grey
+.button80x35, .button80x20, .button130, .button200, .button200grey, .button175, .button175google, .button175facebook, .button175grey
 {
   font-family: 'Cuprum', arial, serif;
   text-decoration: none;
@@ -180,7 +181,7 @@ input[type=checkbox]
   height: 20px;
   width: 80px;
 }
-.button130
+.button130 
 {
   background: transparent url('/images/buttons/130blue.png') no-repeat top right;
   font-size: 13pt;
@@ -214,6 +215,26 @@ input[type=checkbox]
   line-height: 40px;
   margin: 10px;
 }
+.button175google
+{
+  background: transparent url('/images/buttons/175blueGoogle.png') no-repeat top right;
+  font-size: 12pt;
+  height: 40px;
+  width: 175px;
+  line-height: 40px;
+  margin: 10px;
+  text-align: right;
+}
+.button175facebook
+{
+  background: transparent url('/images/buttons/175blueFacebook.png') no-repeat top right;
+  font-size: 12pt;
+  height: 40px;
+  width: 175px;
+  line-height: 40px;
+  margin: 10px;
+  text-align: right;
+}
 .button175grey
 {
   background: transparent url('/images/buttons/175bluegrey.png') no-repeat top right;
@@ -223,7 +244,7 @@ input[type=checkbox]
   line-height: 40px;
   color: black;
 }
-.button80x20blue, .button80x35:hover, .button80x20:hover, .button130:hover, .button200:hover, .button200grey:hover, .button175:hover, .button175grey:hover
+.button80x20blue, .button80x35:hover, .button80x20:hover, .button130:hover, .button200:hover, .button200grey:hover, .button175:hover, .button175grey:hover 
 {
   color: White;
 }

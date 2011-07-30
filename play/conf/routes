@@ -9,15 +9,16 @@ GET     /                                       Application.index
 # TODO GET     /login                                 controllers.Login.index
 GET     /login/new                              Login.form
 POST    /login                                  Login.create
-
-# OpenID
-GET     /openid/new                             OpenID.form
-GET     /openid                                 OpenID.create
-
 POST    /login/delete                           Login.destroy
 DELETE  /login                                  Login.destroy
 
+# Google OpenID
+GET     /openid/new                             OpenID.form
+GET     /openid                                 OpenID.create
 
+# Facebook OAuth2.0
+GET     /facebook/new                           Facebook.form
+GET     /facebook                               Facebook.create
 
 GET     /user                                   User.index
 GET     /user/new                               User.form
@@ -35,6 +36,11 @@ GET     /resource/index.{<json|xml>format}      Resource.index
 POST    /resource                               Resource.create
 POST    /resource.{<json|xml>format}            Resource.create
 GET     /resource/new                           Resource.form
+
+GET     /setting/index                          ApplicationSetting.index
+POST    /setting                                ApplicationSetting.create
+GET     /setting/new                            ApplicationSetting.form
+GET     /setting/{id}                           ApplicationSetting.show
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
