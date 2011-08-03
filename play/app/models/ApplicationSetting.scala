@@ -20,7 +20,7 @@ object ApplicationSetting extends DBBase[ApplicationSetting]("Settings") {
     {super.allXML}
   </ApplicationSetting>
 
-  private def findByKey(key: String) = findOneBy("key", key)
+  def findByKey(key: String) = findOneBy("key", key)
 
   def create(key: String, value: String): Boolean = {
 
@@ -63,9 +63,12 @@ object ApplicationSetting extends DBBase[ApplicationSetting]("Settings") {
         case Some(x) => {
           settings += key -> x.value.get
         }
-        case None => ""
+        case None => {
+          create(key,"")
+          settings += key -> ""
+        }
       }
-      settings.get(key)
     }
+    settings.get(key)
   }
 }

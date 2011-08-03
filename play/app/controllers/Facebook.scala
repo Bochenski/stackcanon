@@ -11,8 +11,7 @@ object Facebook extends Controller with Authentication {
 
   private val _client_id = "facebook_app_id"
   private val _secret = "facebook_app_secret"
-  private val _uri_auth = "website_address" + "/facebook"
-
+  private val _uri_auth = "website_address"
 
   def form() = {
     Redirect("https://www.facebook.com/dialog/oauth?client_id=" + getSetting(_client_id) + "&redirect_uri=" + getSetting(_uri_auth) + "/facebook")

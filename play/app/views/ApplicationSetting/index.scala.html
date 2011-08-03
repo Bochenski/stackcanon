@@ -9,11 +9,15 @@
             <tr class="table_header">
                 <td>Name</td>
                 <td>Value</td>
+                <td></td>
             </tr>
             @settings.map { setting =>
             <tr class="table_row">
                 <td>@setting.key.get</td>
                 <td>@setting.value.get</td>
+                <td>
+                    <input type="button" value="Edit" class="button175" onclick="location.href='@action(controllers.ApplicationSetting.edit(setting.oid.get.toString))'">
+                </td>
             </tr>
             }
         </table>

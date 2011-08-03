@@ -1,10 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+@(setting: models.ApplicationSetting )(implicit flash:play.mvc.Scope.Flash)
+@main(title = "Setting - New") {
+<form action="@action(controllers.ApplicationSetting.index)" method="GET">
+    <div class="box450">
+        <fieldset>
+            <legend>Please Update Setting</legend>
+            <label>Key</label><label>@setting.key.get</label>
+            <label>Value</label><label>@setting.value.get</label>
+            <input type="submit" value="All Settings" class="button175">
+        </fieldset>
+    </div>
+</form>
+}

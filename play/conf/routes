@@ -41,6 +41,9 @@ GET     /setting/index                          ApplicationSetting.index
 POST    /setting                                ApplicationSetting.create
 GET     /setting/new                            ApplicationSetting.form
 GET     /setting/{id}                           ApplicationSetting.show
+GET     /setting/{id}/edit                      ApplicationSetting.edit
+PUT     /setting/{id}                           ApplicationSetting.update
+POST    /setting/{id}                           ApplicationSetting.update
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

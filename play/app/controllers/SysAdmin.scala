@@ -10,8 +10,9 @@ trait SysAdmin {
   def checkSysAdmin = {
     session("user_id") match {
       case Some(user_id) => {
-        if (models.User.isSysAdmin(currentUserObject))
+        if (models.User.isSysAdmin(currentUserObject)) {
           Continue
+        }
         else {
           request.format match {
             case "html" => Action(controllers.Login.form)

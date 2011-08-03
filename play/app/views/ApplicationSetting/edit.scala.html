@@ -1,0 +1,14 @@
+@(setting: models.ApplicationSetting )(implicit flash:play.mvc.Scope.Flash)
+@main(title = "Setting - New") {
+<form action="@action(controllers.ApplicationSetting.update(setting.oid.get.toString))" method="POST">
+    <div class="box450">
+        <fieldset>
+            <legend>Please Update Setting</legend>
+            <label>Key</label><label>@setting.key.get</label>
+            <input type="hidden" name="key" value="@setting.key.get" />
+            <label>Value</label><input type="text" name="value" value="@setting.value.get" />
+            <input type="submit" value="Update Setting" class="button175">
+        </fieldset>
+    </div>
+</form>
+}
