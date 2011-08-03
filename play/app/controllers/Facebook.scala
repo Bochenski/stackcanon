@@ -5,15 +5,17 @@ import play.mvc._
 import play.libs._
 import play.mvc.Scope.Params
 import results.Redirect
+import models.ApplicationSetting._
 
 object Facebook extends Controller with Authentication {
 
-  private val client_id = models.ApplicationSetting.findByKey("facebook_app_id").get.value.get
-  private val secret = models.ApplicationSetting.findByKey("facebook_app_secret").get.value.get
-  private val uri_auth = models.ApplicationSetting.findByKey("website_address").get.value.get + "/facebook"
+  private val _client_id = "facebook_app_id"
+  private val _secret = "facebook_app_secret"
+  private val _uri_auth = "website_address" + "/facebook"
+
 
   def form() = {
-    Redirect("https://www.facebook.com/dialog/oauth?client_id=" + client_id + "&redirect_uri=" + uri_auth)
+    Redirect("https://www.facebook.com/dialog/oauth?client_id=" + getSetting(_client_id) + "&redirect_uri=" + getSetting(_uri_auth) + "/facebook")
   }
 
   def create = {
@@ -26,8 +28,8 @@ object Facebook extends Controller with Authentication {
       val code = params.get("code")
 
       // Send back to facebook
-      val phase2_response = WS.url("https://graph.facebook.com/oauth/access_token?client_id=" + client_id + "&redirect_uri=" + uri_auth +
-        "&client_secret=" + secret + "&code=" + code).body().get().getString
+      val phase2_response = WS.url("https://graph.facebook.com/oauth/access_token?client_id=" + getSetting(_client_id) + "&redirect_uri=" + getSetting(_uri_auth) + "/facebook" +
+        "&client_secret=" + getSetting(_secret) + "&code=" + code).body().get().getString
 
       Logger.info(phase2_response)
       val split = phase2_response.split('&')

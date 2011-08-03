@@ -7,19 +7,22 @@ import com.mongodb.casbah.Imports._
 import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
+import scala.collection._
 
-class ApplicationSetting(o: DBObject) extends DBInstance("Setting",o) {
+class ApplicationSetting(o: DBObject) extends DBInstance("Setting", o) {
   lazy val oid = o.getAs[ObjectId]("_id")
   lazy val key = o.getAs[String]("key")
   lazy val value = o.getAs[String]("value")
 }
 
 object ApplicationSetting extends DBBase[ApplicationSetting]("Settings") {
-  override def allXML = <ApplicationSetting>{ super.allXML }</ApplicationSetting>
+  override def allXML = <ApplicationSetting>
+    {super.allXML}
+  </ApplicationSetting>
 
-  def findByKey(key: String) = findOneBy("key", key)
+  private def findByKey(key: String) = findOneBy("key", key)
 
-  def create(key: String, value: String) : Boolean = {
+  def create(key: String, value: String): Boolean = {
 
     Logger.info("in model create appplication setting")
     //check whether the user exists
@@ -38,17 +41,31 @@ object ApplicationSetting extends DBBase[ApplicationSetting]("Settings") {
     }
   }
 
-  def update (key: String, value: String) : Boolean = {
-     val setting = findByKey(key)
-     setting match {
-       case None => false
-       case Some(_) => {
-         ApplicationSetting.addField(setting.get,key,value)
-         true
-       }
-     }
+  def update(key: String, value: String): Boolean = {
+    val setting = findByKey(key)
+    setting match {
+      case None => false
+      case Some(_) => {
+        ApplicationSetting.addField(setting.get, key, value)
+        if (settings.contains(key)) {
+          settings(key) = value;
+        }
+        true
+      }
+    }
   }
 
-  def show (id: String )={}
+  private var settings = mutable.Map[String, String]()
 
+  def getSetting(key: String) = {
+    if (!settings.contains(key)) {
+      models.ApplicationSetting.findByKey(key) match {
+        case Some(x) => {
+          settings += key -> x.value.get
+        }
+        case None => ""
+      }
+      settings.get(key)
+    }
+  }
 }

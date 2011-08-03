@@ -16,11 +16,14 @@ import scala.collection.JavaConverters._
 
 object OpenID extends Controller with Authentication {
 
-  val manager = new ConsumerManager
-  val returnURL = models.ApplicationSetting.findByKey("website_address").get.value.get +"/openid?oid="
+  private val manager = new ConsumerManager
   private val AX_firstname = "FirstName"
   private val AX_surname = "Surname"
-  private val AX_email= "Email"
+  private val AX_email = "Email"
+
+  private def getOpenIDUrl = {
+     models.ApplicationSetting.getSetting("website_address") + "/openid?oid="
+  }
 
   def form() = {
 
@@ -39,7 +42,7 @@ object OpenID extends Controller with Authentication {
     val oid = models.OpenID.create(baos.toByteArray)
 
     // Obtain AuthRequest
-    val authReq = manager.authenticate(discovered, returnURL + oid.toString)
+    val authReq = manager.authenticate(discovered, getOpenIDUrl + oid.toString)
 
     // Create fetch request
     val fetch = FetchRequest.createFetchRequest
@@ -95,7 +98,7 @@ object OpenID extends Controller with Authentication {
             }
 
             // Create user
-            models.User.create(email, firstname, surname, "", false,false,false, identified.getIdentifier,"")
+            models.User.create(email, firstname, surname, "", false, false, false, identified.getIdentifier, "")
             Logger.info("Logged in " + identified.getIdentifier)
             setSessionUser(models.User.findByGoogleOpenID(identified.getIdentifier).get)
           }
