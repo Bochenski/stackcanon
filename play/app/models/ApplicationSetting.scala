@@ -44,9 +44,12 @@ object ApplicationSetting extends DBBase[ApplicationSetting]("Settings") {
   def update(key: String, value: String): Boolean = {
     val setting = findByKey(key)
     setting match {
-      case None => false
+      case None => {
+        Logger.info("AppSetting not found to update " + key)
+        false
+      }
       case Some(_) => {
-        ApplicationSetting.addField(setting.get, key, value)
+        ApplicationSetting.update(MongoDBObject("_id" -> setting.get.oid.get), $set("value" -> value))
         if (settings.contains(key)) {
           settings(key) = value;
         }

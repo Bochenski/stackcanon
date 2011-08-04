@@ -61,6 +61,11 @@ abstract class DBBase[T: Manifest](collName: String) {
     coll.save(o.dbo)
   }
 
+  def update(query: DBObject, ob: DBObject ) =
+  {
+    coll.update(query,ob)
+  }
+
   def delete(o: DBInstance): WriteResult = {
     coll.remove(o.dbo)
   }

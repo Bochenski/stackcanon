@@ -19,8 +19,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Scala 2.8.1 Compiler" level="application" />
     <orderEntry type="library" exported="" name="Scala 2.8.1 Library" level="application" />
-    <orderEntry type="library" exported="" name="Project Libaray" level="project" />
     <orderEntry type="library" exported="" name="Play 1.2.2" level="application" />
+    <orderEntry type="library" exported="" name="Project Library" level="project" />
   </component>
 </module>
 
