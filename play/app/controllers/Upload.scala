@@ -3,7 +3,7 @@ package controllers
 import play._
 import play.libs._
 import play.mvc._
-import java.io.{FileInputStream, File}
+import java.io._
 
 object Upload extends Controller {
 
@@ -13,8 +13,9 @@ object Upload extends Controller {
     html.index()
   }
   def getphoto = {
-    val bob = "public/images/testImage.png"
-    bob
+    val bob = models.MongoDB.getGridFS.findOne("bob.png")
+    response.setContentTypeIfNotSet(bob.get.contentType)
+    bob.get.inputStream
   }
 
   def create(image:Option[File]) = {
@@ -22,11 +23,12 @@ object Upload extends Controller {
       case Some(image) =>
         Logger.info("Name:" + image.getName())
         Logger.info("path:" + image.getPath())
-        //val photoStream = new FileInputStream(image)
-        val file = new File("public/images/testImage.png")
-        Logger.info("new path:" + file.getAbsolutePath())
-        play.libs.Files.copy(image, file)
-        index
+        val photoStream = new FileInputStream(image)
+
+        models.MongoDB.getGridFS(photoStream) { fh =>
+            fh.filename = "bob.png"
+            fh.contentType = "image/png"
+        }
 
       case None =>
         Logger.info("No Data Received")

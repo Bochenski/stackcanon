@@ -72,6 +72,6 @@ object ApplicationSetting extends DBBase[ApplicationSetting]("Settings") {
         }
       }
     }
-    settings.get(key)
+    settings.get(key).get
   }
 }

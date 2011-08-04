@@ -33,7 +33,7 @@ object Facebook extends Controller with Authentication {
       Logger.info(phase2_response)
       val split = phase2_response.split('&')
       val access_token = split(0)
-      val expires = split(1)
+      //val expires = split(1)
       val whoami = WS.url("https://graph.facebook.com/me?" + access_token).body().get().getString
       Html(whoami)
     }

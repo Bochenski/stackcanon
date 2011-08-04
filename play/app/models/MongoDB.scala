@@ -3,6 +3,7 @@ package models
 import play._
 import play.mvc._
 import com.mongodb.casbah.Imports._
+import com.mongodb.casbah.gridfs.Imports._
 import com.mongodb.casbah.commons.conversions.scala._
 
 class MongoDB() {
@@ -17,17 +18,23 @@ class MongoDB() {
   Logger.info(host + " " + port + " " + name + " " + username + " " + password)
   val server = MongoConnection(host, port)
   val db = server(name)
+  val fs = GridFS(db)
+
   val connected = db.authenticate(username, password)
 
   if (!connected) {
     Logger.fatal("Unable to authenticate against database")
   }
+
+
 }
 
 object MongoDB {
   private val mongodbInstance = new MongoDB
 
   def getDB = mongodbInstance.db
+
+  def getGridFS = mongodbInstance.fs
 
   def isValid = mongodbInstance.connected
 

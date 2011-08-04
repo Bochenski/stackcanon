@@ -30,6 +30,7 @@ GET     /user/{id}                              User.show
 GET     /upload/index                           Upload.index
 POST    /upload                                 Upload.create
 GET     /upload/new                             Upload.form
+GET     /upload/test                            Upload.getPhoto
 
 GET     /resource/index                         Resource.index
 GET     /resource/index.{<json|xml>format}      Resource.index
