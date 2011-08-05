@@ -8,8 +8,6 @@ import org.openid4java.discovery._
 import org.openid4java.message._
 import org.openid4java.message.ax._
 import results.Redirect
-import javax.mail.internet._
-import play.db.Model.Manager
 import java.io._
 import com.mongodb.casbah.Imports._
 import scala.collection.JavaConverters._
@@ -42,7 +40,7 @@ object OpenID extends Controller with Authentication {
     val oid = models.OpenID.create(baos.toByteArray)
 
     // Obtain AuthRequest
-    val authReq = manager.authenticate(discovered, getOpenIDUrl + oid.toString)
+    val authReq = manager.authenticate(discovered, getOpenIDUrl + oid.toString,models.ApplicationSetting.getSetting("website_address"))
 
     // Create fetch request
     val fetch = FetchRequest.createFetchRequest
@@ -78,10 +76,11 @@ object OpenID extends Controller with Authentication {
         case None => {
           if (isUserLoggedIn) {
             // Associate google id with User
+            Logger.info("user already logged into site, associating account with googleid")
             val user = currentUserObject
             models.User.associateWithGoogleOpenID(user, identified.getIdentifier)
           } else {
-            // Brand new user, create user and log in
+
             var firstname = ""
             var surname = ""
             var email = ""
@@ -97,10 +96,21 @@ object OpenID extends Controller with Authentication {
               }
             }
 
-            // Create user
-            models.User.create(email, firstname, surname, "", false, false, false, identified.getIdentifier, "")
-            Logger.info("Logged in " + identified.getIdentifier)
+            models.User.findByUsername(email) match {
+              case Some(user) => {
+                //email address matching from Google is good enough for us, let's associate that user with the account
+                Logger.info("match on username/email, associating with existing account")
+                models.User.associateWithGoogleOpenID(user,identified.getIdentifier)
+              }
+              case None => {
+                // Create user
+                Logger.info("no match on username/email, creating new user")
+                models.User.create(email, firstname, surname, "", false, false, false, identified.getIdentifier, "")
+              }
+            }
+            //in either case we want to log the user in as auth was sucessful
             setSessionUser(models.User.findByGoogleOpenID(identified.getIdentifier).get)
+            Logger.info("Logged in " + identified.getIdentifier)
           }
         }
       }
@@ -111,5 +121,4 @@ object OpenID extends Controller with Authentication {
       Action(Login.form)
     }
   }
-
 }

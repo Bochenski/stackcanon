@@ -1,5 +1,9 @@
-@()(implicit flash:play.mvc.Scope.Flash)
+@(user: models.User)(implicit flash:play.mvc.Scope.Flash)
 
 @main("stackcanon") {
-Content
+        @if(user != null) {
+            <label>Hello, logged in as : @user.username </label>
+        } else {
+            </label>Hello, guest</label>
+        }
 }

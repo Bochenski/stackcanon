@@ -24,9 +24,9 @@ class User(o: DBObject) extends DBInstance("User", o) {
 object User extends DBBase[User]("Users") {
   override def allXML = <Users>{super.allXML}</Users>
 
-  def login(username: String, password: String) = findOneBy(MongoDBObject("username" -> username, "password" -> Codec.hexMD5(password)))
+  def login(username: String, password: String) = findOneBy(MongoDBObject("username" -> username.toLowerCase, "password" -> Codec.hexMD5(password)))
 
-  def findByUsername(username: String) = findOneBy("username", username)
+  def findByUsername(username: String) = findOneBy("username", username.toLowerCase)
 
   def findByGoogleOpenID(id: String) = findOneBy("google_open_id", id)
 
@@ -36,12 +36,13 @@ object User extends DBBase[User]("Users") {
              isStaff: Boolean, isAdmin: Boolean, isSysAdmin: Boolean, google_open_id: String, facebook_id: String) = {
     Logger.info("in model create user")
     //check whether the user exists
-    val user = findByUsername(username)
+    val lowerUser = username.toLowerCase
+    val user = findByUsername(lowerUser)
     user match {
       case Some(_) => false
       case None => {
         val builder = MongoDBObject.newBuilder
-        builder += "username" -> username
+        builder += "username" -> lowerUser
         builder += "first_name" -> first_name
         builder += "surname" -> surname
         builder += "password" -> Codec.hexMD5(password)
@@ -57,7 +58,7 @@ object User extends DBBase[User]("Users") {
         builder += "facebook_id" -> facebook_id
         val newObj = builder.result().asDBObject
         coll += newObj
-        Logger.info("Created username %s", username)
+        Logger.info("Created username %s", lowerUser)
         true
       }
     }

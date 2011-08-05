@@ -12,20 +12,22 @@ object Upload extends Controller {
   def index = {
     html.index()
   }
+
   def getphoto = {
     val bob = models.MongoDB.getGridFS.findOne("bob.png")
     response.setContentTypeIfNotSet(bob.get.contentType)
     bob.get.inputStream
   }
 
-  def create(image:Option[File]) = {
+  def create(image: Option[File]) = {
     image match {
       case Some(image) =>
         Logger.info("Name:" + image.getName())
         Logger.info("path:" + image.getPath())
         val photoStream = new FileInputStream(image)
 
-        models.MongoDB.getGridFS(photoStream) { fh =>
+        models.MongoDB.getGridFS(photoStream) {
+          fh =>
             fh.filename = "bob.png"
             fh.contentType = "image/png"
         }
