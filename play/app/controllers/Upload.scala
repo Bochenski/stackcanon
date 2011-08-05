@@ -25,7 +25,8 @@ object Upload extends Controller {
         Logger.info("Name:" + image.getName())
         Logger.info("path:" + image.getPath())
         val photoStream = new FileInputStream(image)
-
+        Logger.info("other form params: "+  params.get("name"))
+        Logger.info(params.toString)
         models.MongoDB.getGridFS(photoStream) {
           fh =>
             fh.filename = "bob.png"
