@@ -18,15 +18,13 @@ class MongoDB() {
   Logger.info(host + " " + port + " " + name + " " + username + " " + password)
   val server = MongoConnection(host, port)
   val db = server(name)
-  val fs = GridFS(db)
-
   val connected = db.authenticate(username, password)
 
   if (!connected) {
     Logger.fatal("Unable to authenticate against database")
   }
 
-
+  val fs = GridFS(db)
 }
 
 object MongoDB {
