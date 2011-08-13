@@ -7,6 +7,6 @@ object Application extends Controller with Secure {
 
   import views.Application._
 
-  def index = html.index(models.User.findByID(new ObjectId(session("user_id").get)).get)
+  def index = html.index(models.User.findById(new ObjectId(session("user_id").get)).get)
 
 }

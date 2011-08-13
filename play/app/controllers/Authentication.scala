@@ -25,5 +25,5 @@ trait Authentication {
 
   def currentUserObjectId = new ObjectId(session("user_id").get)
 
-  def currentUserObject = models.User.findByID(new ObjectId(session("user_id").get)).get
+  def currentUserObject = models.User.findById(new ObjectId(session("user_id").get)).get
 }

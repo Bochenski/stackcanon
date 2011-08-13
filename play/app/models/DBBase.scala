@@ -24,7 +24,7 @@ abstract class DBBase[T: Manifest](collName: String) {
     new Elem(null, collName, xml.Null, xml.TopScope, nodes: _*)
   }
 
-  def findByID(id: ObjectId): Option[T] = {
+  def findById(id: ObjectId): Option[T] = {
     val q = MongoDBObject("_id" -> id)
     coll.findOne(q, contentField) match {
       case Some(x) => Some(newT(x))

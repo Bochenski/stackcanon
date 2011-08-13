@@ -70,7 +70,7 @@ object Facebook extends Controller with Authentication {
                 case None => {
                   // Create user
                   Logger.info("no match on username/email, creating new user")
-                  models.User.create(email, first_name, last_name, "", false, false, false, "", facebook_id)
+                  models.User.create(email, first_name, last_name, "", "", facebook_id, List("user"))
                 }
               }
               //in either case we want to log the user in as auth was sucessful

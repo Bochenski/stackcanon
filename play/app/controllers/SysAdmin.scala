@@ -2,6 +2,7 @@ package controllers
 
 import play.mvc._
 import org.bson.types.ObjectId
+import com.thoughtworks.xstream.core.util.ObjectIdDictionary
 
 trait SysAdmin {
   self: Controller =>
@@ -10,13 +11,15 @@ trait SysAdmin {
   def checkSysAdmin = {
     session("user_id") match {
       case Some(user_id) => {
-        if (models.User.isSysAdmin(currentUserObject)) {
-          Continue
-        }
-        else {
-          request.format match {
-            case "html" => Action(controllers.Login.form)
-            case _ => Unauthorized
+        models.User.findById(new ObjectId(user_id)) match {
+          case Some(user) => {
+            if (user.isInRole("sysadmin")) { Continue }
+            else {
+              request.format match {
+                case "html" => Action(controllers.Login.form)
+                case _ => Unauthorized
+              }
+            }
           }
         }
       }
@@ -28,7 +31,4 @@ trait SysAdmin {
       }
     }
   }
-
-    def currentUserObject = models.User.findByID(new ObjectId(session("user_id").get)).get
-
 }

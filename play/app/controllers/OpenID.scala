@@ -57,7 +57,7 @@ object OpenID extends Controller with Authentication {
     val openidResp = new org.openid4java.message.ParameterList(params.all)
 
     // Get discovered object
-    val openidobj = models.OpenID.findByID(new ObjectId(params.get("oid"))).get
+    val openidobj = models.OpenID.findById(new ObjectId(params.get("oid"))).get
     val o = new ObjectInputStream(new ByteArrayInputStream(openidobj.discovered.get))
     val discovered = o.readObject().asInstanceOf[DiscoveryInformation]
 
@@ -105,7 +105,7 @@ object OpenID extends Controller with Authentication {
               case None => {
                 // Create user
                 Logger.info("no match on username/email, creating new user")
-                models.User.create(email, firstname, surname, "", false, false, false, identified.getIdentifier, "")
+                models.User.create(email, firstname, surname, "", identified.getIdentifier, "",List("user"))
               }
             }
             //in either case we want to log the user in as auth was sucessful

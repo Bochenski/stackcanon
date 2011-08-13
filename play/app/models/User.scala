@@ -14,11 +14,24 @@ class User(o: DBObject) extends DBInstance("User", o) {
   lazy val first_name = o.getAs[String]("first_name")
   lazy val surname = o.getAs[String]("surname")
   lazy val password = o.getAs[String]("password")
-  lazy val isStaff = o.getAs[Boolean]("isStaff")
-  lazy val isAdmin = o.getAs[Boolean]("isAdmin")
-  lazy val isSysAdmin = o.getAs[Boolean]("isSysAdmin")
   lazy val google_open_id = o.getAs[String]("google_open_id")
   lazy val facebook_id = o.getAs[String]("facebook_id")
+  private lazy val _roles = o.getAs[BasicDBList]("roles")
+
+  def isInRole(role: String) = {
+    _roles match {
+      case Some(roles) => {
+        val roleStrings = roles.toList collect { case s: String => s}
+        val result = roleStrings.contains(role)
+        Logger.info(username +  " is in role " + role + "? :" + result.toString)
+        result
+      }
+      case _ => {
+        Logger.info(username + " is in no roles")
+        false
+      }
+    }
+  }
 }
 
 object User extends DBBase[User]("Users") {
@@ -32,8 +45,7 @@ object User extends DBBase[User]("Users") {
 
   def findByFacebookID(id: String) = findOneBy("facebook_id", id)
 
-  def create(username: String, first_name: String, surname: String, password: String,
-             isStaff: Boolean, isAdmin: Boolean, isSysAdmin: Boolean, google_open_id: String, facebook_id: String) = {
+  def create(username: String, first_name: String, surname: String, password: String, google_open_id: String, facebook_id: String, roles: List[String]) = {
     Logger.info("in model create user")
     //check whether the user exists
     val lowerUser = username.toLowerCase
@@ -46,13 +58,10 @@ object User extends DBBase[User]("Users") {
         builder += "first_name" -> first_name
         builder += "surname" -> surname
         builder += "password" -> Codec.hexMD5(password)
-        builder += "isAdmin" -> isAdmin
-        builder += "isStaff" -> isStaff
-        if (!isSysAdmin) {
-          builder += "isSysAdmin" -> checkForFirstUser()
-        }
-        else {
-          builder += "isSysAdmin" -> isSysAdmin
+        if (!roles.contains("sysadmin")) {
+          builder += "roles" -> checkForFirstUser(roles)
+        } else {
+          builder += "roles" -> roles
         }
         builder += "google_open_id" -> google_open_id
         builder += "facebook_id" -> facebook_id
@@ -65,21 +74,21 @@ object User extends DBBase[User]("Users") {
   }
 
 
-  def create(username: String, first_name: String, surname: String, password: String, isAdmin: Boolean): Boolean =
-    create(username, first_name, surname, password, false, isAdmin, false, "", "")
+  def create(username: String, first_name: String, surname: String, password: String, roles: List[String]): Boolean =
+    create(username, first_name, surname, password, "", "", roles)
 
   private var _hasUsers = false
 
-  private def checkForFirstUser() :Boolean = {
+  private def checkForFirstUser(roles: List[String]) : List[String] = {
     //called as each user is created, is this our first user, if so, make them a super user
     if (!_hasUsers) {
       if (coll.count == 0) {
         Logger.info("making this user a sys admin")
         _hasUsers = true
-        return true
+        return roles ++ List("sysadmin")
       }
     }
-    return false
+    roles
   }
 
   def associateWithGoogleOpenID(user: User, id: String) {
@@ -100,12 +109,5 @@ object User extends DBBase[User]("Users") {
   def dissacociateWithFacebookID(user: User) {
     User.addField(user, "facebook_id", "")
     update(user)
-  }
-
-  def isSysAdmin(user: User): Boolean = {
-    user.isSysAdmin match {
-      case None => false
-      case Some(_) => user.isSysAdmin.get
-    }
   }
 }

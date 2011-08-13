@@ -61,10 +61,10 @@ object ApplicationSetting extends Controller with Secure with SysAdmin {
   }
 
   def show(id: String) = {
-    html.show(models.ApplicationSetting.findByID(new ObjectId(id)).get)
+    html.show(models.ApplicationSetting.findById(new ObjectId(id)).get)
   }
 
   def edit(id: String) = {
-    html.edit(models.ApplicationSetting.findByID(new ObjectId(id)).get)
+    html.edit(models.ApplicationSetting.findById(new ObjectId(id)).get)
   }
 }
