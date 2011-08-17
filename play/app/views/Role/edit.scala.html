@@ -1,0 +1,12 @@
+@(role:models.Role)(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
+@main(title = "Role - Edit") { @views.Tags.html.login() }{
+<form action="@action(controllers.Role.update(role.getId))" method="POST">
+    <div class="box450">
+        <fieldset>
+            <legend>Please update Role details</legend>
+            <label>Name</label><input type="text" name="title" value="@role.getName"/>
+            <input type="submit" value="Update Role" class="button175">
+        </fieldset>
+    </div>
+</form>
+}

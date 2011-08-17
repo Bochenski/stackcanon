@@ -1,0 +1,12 @@
+@()(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
+@main(title = "Role - New") { @views.Tags.html.login() }{
+<form action="@action(controllers.Role.create)" method="POST">
+    <div class="box450">
+        <fieldset>
+            <legend>Please enter Role Details</legend>
+            <label>Name</label><input type="text" name="name"/>
+            <input type="submit" value="Add Role" class="button175">
+        </fieldset>
+    </div>
+</form>
+}

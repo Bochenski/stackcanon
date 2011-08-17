@@ -73,6 +73,9 @@ object User extends DBBase[User]("Users") {
     }
   }
 
+  def addUserToRole(username: String, role: String) = {
+
+  }
 
   def create(username: String, first_name: String, surname: String, password: String, roles: List[String]): Boolean =
     create(username, first_name, surname, password, "", "", roles)

@@ -1,0 +1,20 @@
+@(role:models.Role ,currentUser:models.User)(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
+
+@main("Role - Detail") { @views.Tags.html.login() }{
+
+        <h1 class="sifr">@location.getTitle</h1>
+        <div class="locationCopyLeft">
+            @Html(location.getDetail)
+		</div>
+		<div class="locationImageRight">
+			<img src="/@location.getPhotoPath" alt="@location.getTitle" class="locationThumb" />
+		</div>
+		<div class="clear">&nbsp;</div>
+        <p><a href="http://www.seasonedcourses.com/contact/" class="button">Contact Us</a>
+        @if(session.contains("user_id") && currentUser.isInRole("admin")) {
+            <a href="@action(controllers.Location.edit(location.getIdString))" class="button">Edit This Location</a></p>
+        }
+        </p>
+        @views.Tags.html.courselist(location.getCourses.zipWithIndex,"Users in " + role.getName)
+
+}
