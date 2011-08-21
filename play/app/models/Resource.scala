@@ -10,6 +10,13 @@ import net.liftweb.json.JsonDSL._
 class Resource(o: DBObject) extends DBInstance("Resource", o) {
   lazy val oid = o.getAs[ObjectId]("_id")
   lazy val value = o.getAs[String]("value")
+
+  def getIdString = {
+    oid match {
+      case Some(x) => x.toString
+      case None => ""
+    }
+  }
 }
 
 object Resource extends DBBase[Resource]("Resources") {

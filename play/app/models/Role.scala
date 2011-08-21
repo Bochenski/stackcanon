@@ -17,6 +17,14 @@ class Role(o: DBObject) extends DBInstance("Role", o) {
       case None => ""
     }
   }
+
+  def getIdString = {
+    oid match {
+      case Some(x) => x.toString
+      case None => ""
+    }
+  }
+
 }
 
 object Role extends DBBase[Role]("Roles") {
@@ -29,4 +37,11 @@ object Role extends DBBase[Role]("Roles") {
     true
   }
 
+  def destroy(id: String) = {
+    remove(MongoDBObject("_id" -> new ObjectId(id)))
+  }
+
+  def getNames : Iterable[String] = {
+    all map { role => role.name.get}
+  }
 }

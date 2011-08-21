@@ -1,8 +1,8 @@
 @(roles:Iterable[models.Role],currentUser:models.User)(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
 
-@main("Roles") { @views.Tags.html.login() }{
+@main("Roles"){
     @if(session.contains("user_id") && currentUser.isInRole("sysadmin")) {
-        <a href="@action(controllers.Roles.form)" class="button">New</a></p>
+        <a href="@action(controllers.Role.form)" class="button">New</a></p>
     }
     <h2>User roles</h2>
     @roles.map{ role =>

@@ -16,7 +16,7 @@ class User(o: DBObject) extends DBInstance("User", o) {
   lazy val password = o.getAs[String]("password")
   lazy val google_open_id = o.getAs[String]("google_open_id")
   lazy val facebook_id = o.getAs[String]("facebook_id")
-  private lazy val _roles = o.getAs[BasicDBList]("roles")
+  private lazy val _roles = o.getAs[List[String]]("roles")
 
   def isInRole(role: String) = {
     _roles match {
@@ -73,8 +73,50 @@ object User extends DBBase[User]("Users") {
     }
   }
 
-  def addUserToRole(username: String, role: String) = {
+  def getUsersInRole(role: String) =  {
+    findManyByMatchingArrayContent("roles", MongoDBObject(role -> 1))
+  }
 
+  def addUserToRole(userId: String, roleId: String) {
+       findById(new ObjectId(userId)) match {
+       case Some(user) => {
+         models.Role.findById(new ObjectId(roleId)) match {
+           case Some(role) => {
+             if(!(user.isInRole(role.getName))){
+                update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" -> (user._roles.get :+ role.getName)))
+             }
+           }
+           case None => {
+             Logger.error("role not found to add to user")
+           }
+         }
+
+       }
+       case None => {
+         Logger.error("user not found to add role to")
+       }
+     }
+  }
+
+  def removeUserFromRole(userId: String, roleId: String) {
+    findById(new ObjectId(userId)) match {
+      case Some(user) => {
+        models.Role.findById(new ObjectId(roleId)) match {
+          case Some(role) => {
+            val split =  user._roles.get.splitAt(user._roles.get.indexOf(role.getName))
+            val newRoles = split._1 ::: split._2
+
+            update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" -> newRoles))
+          }
+          case None => {
+            Logger.error("role not found to remove from user")
+          }
+        }
+      }
+      case none => {
+        Logger.error("user not found to remove role from")
+      }
+    }
   }
 
   def create(username: String, first_name: String, surname: String, password: String, roles: List[String]): Boolean =

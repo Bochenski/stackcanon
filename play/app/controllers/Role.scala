@@ -9,7 +9,7 @@ import net.liftweb.json.JsonDSL._
 import results._
 import scala.collection.JavaConverters._
 
-object Role extends Controller {
+object Role extends Controller with Admin with CurrentUser {
 
   import views.Role._
 
@@ -18,7 +18,7 @@ object Role extends Controller {
       case "json" => {
         Json(compact(JsonAST.render(models.Role.allJson)))
       }
-      case _ => html.index(models.Role.all)
+      case _ => html.index(models.Role.all,getCurrentUser)
     }
   }
 
@@ -39,9 +39,20 @@ object Role extends Controller {
     }
   }
 
+  def destroy(id: String) = {
+    models.Role.destroy(id)
+  }
+
   def form = {
     html.form()
   }
 
+  def show(id: String) = {
+    html.show(models.Role.findById(new ObjectId(params.get("roleId"))).get,getCurrentUser)
+  }
   def update(id: String) = {}
+
+  def edit(id: String) = {
+    html.edit(models.Role.findById(new ObjectId(params.get("roleId"))).get)
+  }
 }

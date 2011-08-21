@@ -20,12 +20,40 @@ GET     /openid                                 OpenID.create
 GET     /facebook/new                           Facebook.form
 GET     /facebook                               Facebook.create
 
+GET     /users                                  User.index
 GET     /user                                   User.index
-GET     /user/new                               User.form
+GET     /user/index                             User.index
 POST    /user                                   User.create
-#TODO DELETE  /user/{id}                              User.destroy(id)
-#TODO POST    /user/{id}/delete                       User.destroy(id)
+GET     /user/new                               User.form
 GET     /user/{id}                              User.show
+GET     /user/{id}/edit                         User.edit
+PUT     /user/{id}                              User.update
+POST    /user/{id}                              User.update
+POST    /user/{id}/delete                       User.destroy
+GET     /user/{id}/delete                       User.destroy
+DELETE  /user/{id}                              User.destroy
+
+GET     /roles                                  Role.index
+GET     /role                                   Role.index
+GET     /role/index                             Role.index
+POST    /role                                   Role.create
+GET     /role/new                               Role.form
+GET     /role/{id}                              Role.show
+GET     /role/{id}/edit                         Role.edit
+PUT     /role/{id}                              Role.update
+POST    /role/{id}                              Role.update
+POST    /role/{id}/delete                       Role.destroy
+GET     /role/{id}/delete                       Role.destroy
+DELETE  /role/{id}                              Role.destroy
+
+GET     /user/{userId}/roles                    UserRole.index
+GET     /user/{userId}/role                     UserRole.index
+GET     /user/{userId}/role/index               UserRole.index
+POST    /user/{userId}/role                     UserRole.create
+POST    /user/{userId}/role/{roleId}/delete     UserRole.destroy
+GET     /user/{userId}/role/{roleId}/delete     UserRole.destroy
+DELETE  /user/{userId}/role/{roleId}            UserRole.destroy
+
 
 GET     /upload/index                           Upload.index
 POST    /upload                                 Upload.create

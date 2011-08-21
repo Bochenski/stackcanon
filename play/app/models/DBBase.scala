@@ -52,6 +52,11 @@ abstract class DBBase[T: Manifest](collName: String) {
     for (x <- coll.find(q, contentField).toIterable) yield newT(x)
   }
 
+  def findManyByMatchingArrayContent(arrayField: String, arrayContentToMatch :MongoDBObject) : Iterable[T] = {
+    val q = arrayField $elemMatch arrayContentToMatch
+    for (x <- coll.find(q,contentField).toIterable) yield newT(x)
+  }
+
   def addField(o: DBInstance, key: String, value: Object) {
     o.dbo += key -> value
 //    o.dbo += "schedule" -> Schedule.serialiseSchedule(schedule)
@@ -68,6 +73,10 @@ abstract class DBBase[T: Manifest](collName: String) {
 
   def delete(o: DBInstance): WriteResult = {
     coll.remove(o.dbo)
+  }
+
+  def remove(query: DBObject) = {
+    coll.remove(query)
   }
 
 }
