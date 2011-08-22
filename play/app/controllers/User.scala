@@ -6,13 +6,13 @@ import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
 
-object User extends Controller with Authentication {
+object User extends Controller with Authentication with CurrentUser{
 
   import views.User._
 
   def index = {
     request.format match {
-//      case "html" => html.index()
+      case "html" => html.index(models.User.all,getCurrentUser)
       case "xml" => Xml(models.User.allXML)
       case "json" => Json(compact(JsonAST.render(models.User.allJson)))
     }
@@ -21,7 +21,7 @@ object User extends Controller with Authentication {
   def show(id: String) = {
     val oid = new ObjectId(id)
     request.format match {
-//      case "html" => html.show(id)
+      case "html" => html.show(models.User.findById(oid).get,getCurrentUser)
       case "xml" => Xml(models.User.findById(oid).get.toXml)
       case "json" => Json(compact(JsonAST.render(models.User.findById(oid).get.toJson)))
     }

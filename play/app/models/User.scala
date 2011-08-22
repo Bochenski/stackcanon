@@ -72,6 +72,28 @@ class User(o: DBObject) extends DBInstance("User", o) {
       case None => ""
     }
   }
+
+  def getFirstName = {
+    first_name match {
+      case Some(name) => name
+      case None => ""
+    }
+  }
+
+  def getLastName = {
+    surname match {
+      case Some(lastName) => lastName
+      case None => ""
+    }
+  }
+
+  def getUsername = {
+    username match {
+      case Some(thing) => thing
+      case None => ""
+    }
+  }
+
 }
 
 object User extends DBBase[User]("Users") {
@@ -113,8 +135,21 @@ object User extends DBBase[User]("Users") {
     }
   }
 
-  def getUsersInRole(role: String) =  {
+  def update(username: String, first_name: String, surname: String, password: String, password_confirm: String) :Boolean = {
 
+    models.User.findByUsername(username) match {
+      case Some(user) => {
+        update(MongoDBObject("_id" -> user.getId), $set("first_name" -> first_name, "surname" -> surname))
+        true
+      }
+      case None => {
+        Logger.error("no user found to update with username " + username)
+        false
+      }
+    }
+  }
+
+  def getUsersInRole(role: String) =  {
     findManyByMatchingArrayContent("roles", MongoDBObject(role -> 1))
   }
 
