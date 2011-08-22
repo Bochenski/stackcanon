@@ -2,6 +2,7 @@ package models
 
 import com.mongodb.casbah.Imports._
 import scala.xml._
+import play._
 
 abstract class DBBase[T: Manifest](collName: String) {
   def coll = MongoDB.getDB(collName)
@@ -27,6 +28,13 @@ abstract class DBBase[T: Manifest](collName: String) {
   def findById(id: ObjectId): Option[T] = {
     val q = MongoDBObject("_id" -> id)
     coll.findOne(q, contentField) match {
+      case Some(x) => Some(newT(x))
+      case None => None
+    }
+  }
+
+  def findOne(): Option[T] = {
+    coll.findOne() match {
       case Some(x) => Some(newT(x))
       case None => None
     }
@@ -68,6 +76,7 @@ abstract class DBBase[T: Manifest](collName: String) {
 
   def update(query: DBObject, ob: DBObject ) =
   {
+    Logger.info("query: " + query.toString + "object: " + ob.toString)
     coll.update(query,ob)
   }
 

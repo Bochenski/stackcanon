@@ -2,6 +2,8 @@ package models
 
 import scala.xml._
 import play._
+import data.validation.Valid
+import mvc.Scope.Flash
 import play.libs.Codec;
 import com.mongodb.casbah.Imports._
 import net.liftweb.json._
@@ -16,20 +18,58 @@ class User(o: DBObject) extends DBInstance("User", o) {
   lazy val password = o.getAs[String]("password")
   lazy val google_open_id = o.getAs[String]("google_open_id")
   lazy val facebook_id = o.getAs[String]("facebook_id")
-  private lazy val _roles = o.getAs[List[String]]("roles")
+  lazy val _roles = o.getAs[BasicDBList]("roles")
 
   def isInRole(role: String) = {
-    _roles match {
-      case Some(roles) => {
-        val roleStrings = roles.toList collect { case s: String => s}
-        val result = roleStrings.contains(role)
-        Logger.info(username +  " is in role " + role + "? :" + result.toString)
-        result
+    //first find the role in the Roles Table
+    models.Role.findByName(role) match {
+      case Some(dbRole) => {
+         _roles match {
+            case Some(roles) => {
+              val roleStrings = roles.toList collect { case s: String => s}
+              val result = roleStrings.contains(dbRole.getIdString)
+              Logger.info(username +  " is in role " + role + "? :" + result.toString)
+              result
+            }
+            case _ => {
+              Logger.info(username + " is in no roles")
+              false
+            }
+         }
       }
-      case _ => {
-        Logger.info(username + " is in no roles")
+      case None => {
+        Logger.error("role" + role + " not found in Roles List")
         false
       }
+
+    }
+
+  }
+
+  def getUserRoles() :List[String] = {
+    _roles match {
+      case Some(roles) => {
+        val roleList = (roles.toList map (role => role.toString))
+        roleList
+      }
+      case None => {
+        val empty = List("")
+        empty
+      }
+    }
+  }
+
+  def getId() = {
+    oid match {
+      case Some(id) => id
+      case None => null
+    }
+  }
+
+  def getIdString() = {
+    oid match {
+      case Some(id) => id.toString
+      case None => ""
     }
   }
 }
@@ -61,7 +101,7 @@ object User extends DBBase[User]("Users") {
         if (!roles.contains("sysadmin")) {
           builder += "roles" -> checkForFirstUser(roles)
         } else {
-          builder += "roles" -> roles
+          builder += "roles" -> models.Role.getRoleIdList(roles)
         }
         builder += "google_open_id" -> google_open_id
         builder += "facebook_id" -> facebook_id
@@ -74,6 +114,7 @@ object User extends DBBase[User]("Users") {
   }
 
   def getUsersInRole(role: String) =  {
+
     findManyByMatchingArrayContent("roles", MongoDBObject(role -> 1))
   }
 
@@ -83,7 +124,7 @@ object User extends DBBase[User]("Users") {
          models.Role.findById(new ObjectId(roleId)) match {
            case Some(role) => {
              if(!(user.isInRole(role.getName))){
-                update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" -> (user._roles.get :+ role.getName)))
+                update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" -> (user._roles.get :+ role.getIdString)))
              }
            }
            case None => {
@@ -103,10 +144,9 @@ object User extends DBBase[User]("Users") {
       case Some(user) => {
         models.Role.findById(new ObjectId(roleId)) match {
           case Some(role) => {
-            val split =  user._roles.get.splitAt(user._roles.get.indexOf(role.getName))
-            val newRoles = split._1 ::: split._2
+            user._roles.get.removeField(role.getIdString)
 
-            update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" -> newRoles))
+            update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" ->  user._roles.get))
           }
           case None => {
             Logger.error("role not found to remove from user")
@@ -130,7 +170,7 @@ object User extends DBBase[User]("Users") {
       if (coll.count == 0) {
         Logger.info("making this user a sys admin")
         _hasUsers = true
-        return roles ++ List("sysadmin")
+        return models.Role.getRoleIdList(roles) ++ models.Role.getRoleIdList(List("sysadmin"))
       }
     }
     roles

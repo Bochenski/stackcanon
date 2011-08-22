@@ -48,11 +48,11 @@ object Role extends Controller with Admin with CurrentUser {
   }
 
   def show(id: String) = {
-    html.show(models.Role.findById(new ObjectId(params.get("roleId"))).get,getCurrentUser)
+    html.show(models.Role.findById(new ObjectId(id)).get,getCurrentUser)
   }
   def update(id: String) = {}
 
   def edit(id: String) = {
-    html.edit(models.Role.findById(new ObjectId(params.get("roleId"))).get)
+    html.edit(models.Role.findById(new ObjectId(id)).get)
   }
 }

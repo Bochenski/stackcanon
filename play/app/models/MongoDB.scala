@@ -25,10 +25,13 @@ class MongoDB() {
   }
 
   val fs = GridFS(db)
+
 }
 
 object MongoDB {
   private val mongodbInstance = new MongoDB
+
+
 
   def getDB = mongodbInstance.db
 
@@ -49,4 +52,5 @@ object MongoDB {
     })
     true
   }
+
 }
