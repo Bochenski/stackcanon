@@ -65,8 +65,8 @@ object Version extends DBBase[Version]("Versions") {
           case 0 => {
             //upgrade to version 1
             models.User.all() foreach { user =>
-              var currentRoles = user.getUserRoles
-              user.getUserRoles foreach { role =>
+              var currentRoles = user.getUserRoleIdStrings
+              user.getUserRoleIdStrings foreach { role =>
                 models.Role.findByName(role)  match {
                   case Some(dbRole) => {
                     //so here we already have a role by that name,  just need to alter the object

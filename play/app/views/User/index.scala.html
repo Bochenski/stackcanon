@@ -1,4 +1,4 @@
-@(users:Iterable[models.User],currentUser: models.User)(implicit flash:play.mvc.Scope.Flash)
+@(users:Iterable[models.User],currentUser: models.User)(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
 
 @if(flash.get("error")) {
 	<p style="color:#c00">
@@ -6,9 +6,15 @@
 	</p>
 }
 @main(title = "Resources") {
-		<ul>
-		@users.map { user =>
-			<li>@user.getUsername</li>
-		}
-		</ul>
+    <ul>
+    @users.map { user =>
+        <li>@user.getUsername
+        @if(session.contains("user_id") && currentUser.isInRole("sysadmin")) {
+            - <a href="@action(controllers.User.show(user.getIdString))" class="button">View</a> -
+            <a href="@action(controllers.User.edit(user.getIdString))" class="button">Edit</a> -
+            <a href="@action(controllers.User.destroy(user.getIdString))" class="button">Delete</a>
+        }
+        </li>
+    }
+    </ul>
 }

@@ -6,15 +6,20 @@ import net.liftweb.json._
 import net.liftweb.json.JsonAST
 import net.liftweb.json.JsonDSL._
 
-object User extends Controller with Authentication with CurrentUser{
+object User extends Controller with Authentication with CurrentUser with CreateOnly {
 
   import views.User._
 
   def index = {
-    request.format match {
-      case "html" => html.index(models.User.all,getCurrentUser)
-      case "xml" => Xml(models.User.allXML)
-      case "json" => Json(compact(JsonAST.render(models.User.allJson)))
+    if (getCurrentUser.isInRole("sysadmin"))
+    {
+      request.format match {
+        case "html" => html.index(models.User.all,getCurrentUser)
+        case "xml" => Xml(models.User.allXML)
+        case "json" => Json(compact(JsonAST.render(models.User.allJson)))
+      }
+    } else {
+      Action(form)
     }
    }
 
@@ -39,5 +44,19 @@ object User extends Controller with Authentication with CurrentUser{
         flash += ("error" -> "Registration failed")
         Action(form)
     }
+  }
+
+  def edit(id: String) = {
+   html.edit(models.User.findById(new ObjectId(id)).get,getCurrentUser, models.Role.all)
+  }
+
+  def update(id: String) = {
+    //do some update work
+    Action(show(id))
+  }
+
+  def destroy(id: String) = {
+    //do some deleting work
+    Action(index)
   }
 }

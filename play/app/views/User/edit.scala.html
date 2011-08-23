@@ -1,4 +1,4 @@
-@(user:models.User, roles:Iterable[models.Role], currentUser: models.User)(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
+@(user:models.User, currentUser: models.User, roles:Iterable[models.Role])(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
 @main(title = "Update My Account"){
 <form action="/user/@user.getIdString" method="POST" enctype="multipart/form-data">
     <div class="box450">
@@ -11,8 +11,33 @@
             <label>New Password</label><input type="password" name="password" />
             <label>Confirm New Password</label><input type="password" name="password_confirm" />
             <input type="submit" value="Update Account" class="button175">
+
+            <legend>User Roles</legend>
+            @user.getUserRoles.map { role =>
+                <label>@role.get.getName</label>
+                @if(currentUser.isInRole("sysadmin")) {
+                    <a href="/user/@user.getIdString/role/@role.get.getIdString/delete">Remove from Role</a>
+                }
+            }
+
+
+
         </fieldset>
     </div>
 </form>
+@if(currentUser.isInRole("sysadmin")) {
+    <form action="@action(controllers.UserRole.create)" method="POST" enctype="multipart/form-data">
+        <div class="box450">
+            <fieldset>
+                <legend>Assign User to Role</legend>
+                <select name="roleId">
+                    @roles.map{ role => <option value="@role.getIdString" >@role.getName</option>  }
+                </select>
+                <input type="hidden" name="userId" value="@user.getIdString" />
+                <input type="submit" value="Assign to Role" class="button175">
+            </fieldset>
+        </div>
+    </form>
+}
 
 }

@@ -50,6 +50,7 @@ GET     /user/{userId}/roles                    UserRole.index
 GET     /user/{userId}/role                     UserRole.index
 GET     /user/{userId}/role/index               UserRole.index
 POST    /user/{userId}/role                     UserRole.create
+POST    /userrole                               UserRole.create
 POST    /user/{userId}/role/{roleId}/delete     UserRole.destroy
 GET     /user/{userId}/role/{roleId}/delete     UserRole.destroy
 DELETE  /user/{userId}/role/{roleId}            UserRole.destroy

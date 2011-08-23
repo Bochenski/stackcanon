@@ -13,6 +13,7 @@ object UserRole extends Controller with Admin {
 
   def create() = {
     //need to check that a user is a super-user if they're trying to add a user to the superusers role
+    Logger.info("in create user role userId: "  + params.get("userId") + " roleid " + params.get("roleId"))
     models.Role.findById(new ObjectId(params.get("roleId")))  match {
       case Some(role) => {
         if (role == "sysadmin") {

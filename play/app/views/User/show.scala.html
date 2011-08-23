@@ -1,17 +1,15 @@
 @(user:models.User, currentUser: models.User)(implicit flash:play.mvc.Scope.Flash, session:play.mvc.Scope.Session)
 @main(title = "Update My Account"){
-<form action="/user/@user.getIdString" method="POST" enctype="multipart/form-data">
     <div class="box450">
         <fieldset>
-            <legend>Please update User details</legend>
-            <input type="hidden" name="id" value="@user.getIdString"  />
-            <label>Username</label><input type="text" name="username" value="@user.getUsername" />
-            <label>First Name</label><input type="text" name="first_name" value="@user.getFirstName"/>
-            <label>Last Name</label><input type="text" name="surname" value="@user.getLastName"/>
-            <label>New Password</label><input type="password" name="password" />
-            <label>Confirm New Password</label><input type="password" name="password_confirm" />
-            <input type="submit" value="Update Account" class="button175">
+            <legend>User Info</legend>
+            <label>Username: @user.getUsername</label>
+            <label>First Name: @user.getFirstName</label>
+            <label>Last Name: @user.getLastName</label>
+            <a href="@action(controllers.User.edit(user.getIdString))" class="button">Edit</a>
+            <legend>User Roles</legend>
+            @user.getUserRoles.map { role => <label>@role.get.getName</label> }
+            <a href="@action(controllers.User.edit(user.getIdString))" class="button">Edit</a>
         </fieldset>
-    </div>
-</form>
+</div>
 }

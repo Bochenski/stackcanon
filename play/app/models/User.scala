@@ -46,7 +46,19 @@ class User(o: DBObject) extends DBInstance("User", o) {
 
   }
 
-  def getUserRoles() :List[String] = {
+  def getUserRoles = {
+    _roles match {
+      case Some(roles) => {
+        val roleList = (roles.toList map (role => {
+          Logger.info("role " + role.toString)
+          models.Role.findById(new ObjectId(role.toString))
+        }))
+        roleList
+      }
+      case None => null
+    }
+  }
+  def getUserRoleIdStrings() :List[String] = {
     _roles match {
       case Some(roles) => {
         val roleList = (roles.toList map (role => role.toString))
@@ -179,9 +191,10 @@ object User extends DBBase[User]("Users") {
       case Some(user) => {
         models.Role.findById(new ObjectId(roleId)) match {
           case Some(role) => {
-            user._roles.get.removeField(role.getIdString)
-
-            update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" ->  user._roles.get))
+            Logger.info(user._roles.get.toString)
+            val newRoles = user._roles.get.diff(List(role.getIdString))
+            Logger.info(newRoles.toString)
+            update(MongoDBObject("_id" -> new ObjectId(userId)), $set("roles" -> newRoles))
           }
           case None => {
             Logger.error("role not found to remove from user")
