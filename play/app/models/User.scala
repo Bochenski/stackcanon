@@ -221,7 +221,7 @@ object User extends DBBase[User]("Users") {
         return models.Role.getRoleIdList(roles) ++ models.Role.getRoleIdList(List("sysadmin"))
       }
     }
-    roles
+    models.Role.getRoleIdList(roles)
   }
 
   def associateWithGoogleOpenID(user: User, id: String) {
